@@ -1,0 +1,8 @@
+{
+  "ConnectionString": "Data Source=(localdb)\\mssqllocaldb; Initial Catalog=Chaika;Integrated Security=True",
+  "SSHPPKPath": "",
+  "AWSAccessKeyID": "AKIAQAZUI7WSR3TOVIPZ",
+  "AWSSecretKey": "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",
+  "Environment": "DEVLOCAL",
+  "VerificationRandomString": "egyieygfbuiveh93w4g973g79f3b9f3b9732g75137g1rb7veqb89v3qb8931g9r3"
+}
