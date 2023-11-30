@@ -1,5 +1,4 @@
 ﻿using ChaikaTest.Infrastructure.Database;
-using ChaikaTest.Infrastructure.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -13,7 +12,6 @@ namespace ChaikaTest.Infrastructure
 
         public static void AddInfrastructureServices(this IServiceCollection services, IConfiguration _config)
         {
-            services.AddTransient<IMD5ChecksumService, MD5ChecksumService>();
 
             var connStr = _config.GetConnectionString("ConnectionString");
 

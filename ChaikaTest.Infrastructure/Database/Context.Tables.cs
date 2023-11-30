@@ -10,9 +10,6 @@ namespace ChaikaTest.Infrastructure.Database
 {
     public partial class Context
     {
-        public virtual DbSet<Image> Images { get; set; }
-        public virtual DbSet<Transaction> Transactions { get; set; }
-
-        public virtual DbSet<Card> Cards { get; set; }
+        public virtual DbSet<Tasks> Tasks { get; set; }
     }
 }

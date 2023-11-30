@@ -1,22 +1,12 @@
 // read database configuration (database provider + database connection) from environment variables
-using ChaikaTest.Application.Card.Create;
-using ChaikaTest.Application.Card.Delete;
-using ChaikaTest.Application.Card.Read;
-using ChaikaTest.Application.Image.Create;
-using ChaikaTest.Application.Image.Delete;
-using ChaikaTest.Application.Image.Read;
-using ChaikaTest.Application.Image.Update;
-using ChaikaTest.Application.Transaction.Create;
-using ChaikaTest.Application.Transaction.Delete;
-using ChaikaTest.Application.Transaction.Query;
-using ChaikaTest.Application.Transaction.Read;
-using ChaikaTest.Infrastructure;
 using ChaikaTest.Infrastructure.Database;
-using ChaikaTest.Infrastructure.Helpers;
-using ChaikaTest.Infrastructure.Services;
 using MediatR;
-using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
+using ShopTest.View.Task.Create;
+using ShopTest.View.Task.Delete;
+using ShopTest.View.Task.Query;
+using ShopTest.View.Task.Read;
+using ShopTest.View.Task.Update;
 using System.Reflection;
 
 public class Program
@@ -48,24 +38,16 @@ public class Program
             .UseSqlServer(connectionString)
             .Options;
 
-        //builder.Services.AddInfrastructureServices(_config);
-        #region Mediatr
-        builder.Services.AddTransient<IRequestHandler<CreateCardRequestDTO, CreateCardResponseDTO>, CreateCardHandler>();
-        builder.Services.AddTransient<IRequestHandler<DeleteCardRequestDTO, Unit>, DeleteCardHandler>();
-        builder.Services.AddTransient<IRequestHandler<ReadCardRequestDTO, ReadCardResponseDTO>, ReadCardHandler>();
-
-        builder.Services.AddTransient<IRequestHandler<CreateImageRequestDTO, CreateImageResponseDTO>, CreateImageHandler>();
-        builder.Services.AddTransient<IRequestHandler<DeleteImageRequestDTO, Unit>, DeleteImageHandler>();
-        builder.Services.AddTransient<IRequestHandler<ReadImageRequestDTO, ReadImageResponseDTO>, ReadImageHandler>();
-        builder.Services.AddTransient<IRequestHandler<UpdateImageRequestDTO, UpdateImageResponseDTO>, UpdateImageHandler>();
-
-        builder.Services.AddTransient<IRequestHandler<CreateTransactionRequestDTO, CreateTransactionResponseDTO>, CreateTransactionHandler>();
-        builder.Services.AddTransient<IRequestHandler<DeleteTransactionRequestDTO, Unit>, DeleteTransactionHandler>();
-        builder.Services.AddTransient<IRequestHandler<ReadTransactionRequestDTO, ReadTransactionResponseDTO>, ReadTransactionHandler>();
-        builder.Services.AddTransient<IRequestHandler<QueryTransactionListRequestDTO, QueryTransactionListResponseDTO>, QueryTransactionListHandler>();
-
-        builder.Services.AddTransient<IMD5ChecksumService, MD5ChecksumService>();
+        #region MediatR
+        builder.Services.AddTransient<IRequestHandler<CreateTaskRequestDTO, int>, CreateTaskHandler>();
+        builder.Services.AddTransient<IRequestHandler<DeleteTaskRequestDTO, Unit>, DeleteTaskHandler>();
+        builder.Services.AddTransient<IRequestHandler<QueryTasksRequestDTO, QueryTasksResponseDTO>, QueryTasksHandler>();
+        builder.Services.AddTransient<IRequestHandler<ReadTaskRequestDTO, ReadTaskResponseDTO>, ReadTaskHandler>();
+        builder.Services.AddTransient<IRequestHandler<UpdateTaskRequestDTO, int>, UpdateTaskHandler>();
         #endregion
+
+        //builder.Services.AddInfrastructureServices(_config);
+
         // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
         builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddSwaggerGen();

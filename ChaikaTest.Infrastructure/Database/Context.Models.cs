@@ -7,19 +7,9 @@ namespace ChaikaTest.Infrastructure.Database
     {
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<ChaikaTest.Domain.Image>(i =>
+            modelBuilder.Entity<Tasks>(t =>
             {
-                i.HasMany(i => i.Transactions)
-                .WithMany(t => t.Images);
-            });
-
-            modelBuilder.Entity<Card>(c =>
-            {
-                c.HasMany(c => c.Transactions)
-                .WithOne(t => t.Card)
-                .HasForeignKey(t => t.CardId)
-                .OnDelete(DeleteBehavior.NoAction);
-
+                t.HasKey(t => t.Id);
             });
         }
     }
